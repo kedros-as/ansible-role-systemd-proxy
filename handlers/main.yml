@@ -8,8 +8,8 @@
   listen: systemd-restart-socket
 
 - name: Restart systemd service unit
-  systemd:                      
-      daemon_reload: True       
+  systemd:
+      daemon_reload: True
       name: "{{ UnitName }}.service"
-      state: restarted          
+      state: restarted
   listen: systemd-restart-service
