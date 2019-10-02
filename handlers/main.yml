@@ -1,0 +1,15 @@
+---
+# handlers file for systemd-proxy
+- name: Restart systemd socket unit
+  systemd:
+      daemon_reload: True
+      name: "{{ UnitName }}.socket"
+      state: restarted
+  listen: systemd-restart-socket
+
+- name: Restart systemd service unit
+  systemd:                      
+      daemon_reload: True       
+      name: "{{ UnitName }}.service"
+      state: restarted          
+  listen: systemd-restart-service

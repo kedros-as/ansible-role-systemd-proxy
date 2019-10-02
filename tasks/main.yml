@@ -1,0 +1,26 @@
+---
+# tasks file for systemd-proxy
+- name: Install socket unit file
+  template:
+      src: systemd-socket-proxyd.socket
+      dest: /etc/systemd/system/{{ UnitName }}.socket
+      owner: root
+      group: root
+      mode: 0644
+  notify: systemd-restart-socket
+
+- name: Install service unit file                     
+  template:     
+      src: systemd-socket-proxyd.service
+      dest: /etc/systemd/system/{{ UnitName }}.service
+      owner: root
+      group: root
+      mode: 0644
+  notify: systemd-restart-service
+
+- name: Enable and start socket unit
+  systemd:
+      name: "{{ UnitName }}.socket"
+      state: started
+      enabled: True
+

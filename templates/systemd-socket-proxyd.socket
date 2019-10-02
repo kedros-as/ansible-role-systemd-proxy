@@ -1,0 +1,12 @@
+# Created with Ansible role systemd-proxy
+[Socket]
+ListenStream={{ ListenStream }}
+[Unit]
+{% if Description is defined %}
+Description={{ Description }}
+{% endif %}
+{% if Documentation is defined %}
+Documentation={{ Documentation }}
+{% endif %}
+[Install]
+WantedBy=sockets.target

@@ -1,0 +1,10 @@
+# Created with Ansible role systemd-proxy
+[Service]
+ExecStart=/lib/systemd/systemd-socket-proxyd {{ ProxyDestination }}
+[Unit]
+{% if Description is defined %}
+Description={{ Description }}
+{% endif %}
+{% if Documentation is defined %}
+Documentation={{ Documentation }}
+{% endif %}
